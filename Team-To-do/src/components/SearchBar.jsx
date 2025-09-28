@@ -5,7 +5,7 @@ export default function SearchBar({ search, setSearch }) {
       placeholder="Buscar tarea o autor..."
       value={search}
       onChange={(e) => setSearch(e.target.value)}
-      className="w-full border rounded p-2 mb-4"
+      className="w-full p-2 border-2 rounded bg-white"
     />
   );
 }

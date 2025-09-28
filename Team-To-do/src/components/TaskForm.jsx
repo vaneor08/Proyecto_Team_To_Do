@@ -20,7 +20,7 @@ export default function TaskForm({ addTask, author }) {
         placeholder="Escribe una tarea..."
         value={text}
         onChange={(e) => setText(e.target.value)}
-        className="flex-1 border rounded p-2"
+        className="w-full p-2 border-2 rounded bg-white"
       />
       <button className="bg-green-500 text-white px-4 rounded hover:bg-green-600">
         ➕

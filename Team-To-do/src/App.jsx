@@ -35,9 +35,8 @@ function App() {
   if (!user) return <Login setUser={setUser} />;
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Team To-Do ✅</h1>
+    <div className="min-h-screen bg-blue-200 p-6">
+      <div className="flex justify-end mb-6">
         <button
           onClick={logout}
           className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
@@ -46,11 +45,16 @@ function App() {
         </button>
       </div>
 
-      <p className="mb-4">Bienvenido, {user} 👋</p>
+      <div className="flex flex-col items-center text-center">
+        <h1 className="text-3xl font-bold mb-2">Team To-Do ✅</h1>
+        <p className="mb-6">Bienvenido, {user} 👋</p>
 
-      <TaskForm addTask={addTask} author={user} />
-      <SearchBar search={search} setSearch={setSearch} />
-      <TaskList tasks={filteredTasks} toggleTask={toggleTask} />
+        <div className="w-full max-w-2xl space-y-4">
+          <TaskForm addTask={addTask} author={user} />
+          <SearchBar search={search} setSearch={setSearch} />
+          <TaskList tasks={filteredTasks} toggleTask={toggleTask} />
+        </div>
+      </div>
     </div>
   );
 }

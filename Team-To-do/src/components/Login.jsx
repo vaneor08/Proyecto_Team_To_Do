@@ -6,9 +6,9 @@ export default function Login({ setUser }) {
   const [error, setError] = useState("");
 
   const users = [
-    { username: "usuario1", password: "1234" },
-    { username: "usuario2", password: "abcd" },
-    { username: "usuario3", password: "admin" },
+    { username: "Nataly123", password: "nataly123" },
+    { username: "Alison123", password: "alison123" },
+    { username: "Andres123", password: "andres123" },
   ];
 
   const handleLogin = (e) => {
@@ -27,16 +27,16 @@ export default function Login({ setUser }) {
     <div className="flex items-center justify-center h-screen bg-blue-200">
       <form
         onSubmit={handleLogin}
-        className="bg-white p-6 rounded-xl shadow-lg space-y-4 w-80"
+        className="bg-white p-8 rounded-2xl shadow-xl space-y-5 w-96"
       >
-        <h2 className="text-xl font-bold text-center">Iniciar sesión</h2>
+        <h2 className="text-2xl font-bold text-center">Iniciar sesión</h2>
 
         <input
           type="text"
           placeholder="Usuario"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="w-full p-2 border rounded"
+          className="w-full p-3 border rounded-lg"
         />
 
         <input
@@ -44,15 +44,16 @@ export default function Login({ setUser }) {
           placeholder="Contraseña"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full p-2 border rounded"
+          className="w-full p-3 border rounded-lg"
         />
 
         {error && <p className="text-red-500 text-sm">{error}</p>}
 
-        <button className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
+        <button className="w-full bg-blue-500 text-white py-3 rounded-lg text-lg font-semibold hover:bg-blue-600">
           Entrar
         </button>
       </form>
     </div>
+
   );
 }

@@ -5,7 +5,7 @@ export default function TaskItem({ task, toggleTask }) {
         task.completed ? "bg-green-100" : "bg-white"
       }`}
     >
-      <div>
+      <div className="flex flex-col text-left">
         <p className={task.completed ? "line-through text-gray-500" : ""}>
           {task.text}
         </p>
