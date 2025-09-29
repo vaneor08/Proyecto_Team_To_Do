@@ -6,7 +6,7 @@ export default function TaskForm({ addTask, author }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!text.trim()) return;
-    addTask({ id: Date.now(), author, text, completed: false });
+    addTask({ author, text, completed: false });
     setText("");
   };
 

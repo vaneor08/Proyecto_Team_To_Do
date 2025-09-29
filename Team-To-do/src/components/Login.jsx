@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Login({ setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate(); // 👈 hook para redirigir
 
   const users = [
     { username: "Nataly123", password: "nataly123" },
@@ -18,6 +20,7 @@ export default function Login({ setUser }) {
     );
     if (found) {
       setUser(found.username);
+      navigate("/tasks"); // 👈 redirige a /tasks
     } else {
       setError("Credenciales inválidas ❌");
     }
@@ -54,6 +57,5 @@ export default function Login({ setUser }) {
         </button>
       </form>
     </div>
-
   );
 }
