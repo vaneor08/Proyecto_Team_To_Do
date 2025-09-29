@@ -1,16 +1,128 @@
-# React + Vite
+📌 Team To-Do ✅
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación colaborativa de gestión de tareas desarrollada con React 19 + Vite + TailwindCSS y simulación de backend con JSON Server.
+Permite a un equipo crear, editar, eliminar, buscar y filtrar tareas en tiempo real.
 
-Currently, two official plugins are available:
+🚀 Características principales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✅ Autenticación simulada: inicio/cierre de sesión con usuarios predefinidos.
 
-## React Compiler
+📝 Gestión de tareas: crear, editar, completar, desmarcar y eliminar tareas.
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🔎 Búsqueda dinámica con debounce: filtra tareas por autor o texto en tiempo real.
 
-## Expanding the ESLint configuration
+🔄 Estados de carga y error: indicador de “cargando…” y manejo de errores en UI.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🔔 Notificaciones con Toastify: retroalimentación visual al crear, editar o borrar.
+
+🔒 Rutas protegidas: acceso a /tasks solo si hay sesión iniciada.
+
+🎨 Diseño responsivo con Tailwind CSS.
+
+🗂️ Arquitectura de componentes modular y reutilizable.
+
+📡 Consumo de API con Axios hacia JSON Server.
+
+📂 Estructura del Proyecto
+src/
+│── components/
+│   ├── Login.jsx
+│   ├── TaskForm.jsx
+│   ├── TaskList.jsx
+│   ├── TaskItem.jsx
+│   ├── SearchBar.jsx
+│   └── ProtectedRoute.jsx
+│
+│── hooks/
+│   ├── useDebounce.js
+│   └── useLocalStorage.js
+│
+│── App.jsx
+│── main.jsx
+│── index.css
+│
+db.json   # Base de datos simulada para JSON Server
+
+⚙️ Instalación y configuración
+
+Clonar repositorio
+
+git clone https://github.com/tuusuario/Team-To-Do.git
+cd Team-To-Do
+
+
+Instalar dependencias
+
+npm install
+
+
+Levantar servidor JSON Server
+
+npx json-server --watch db.json --port 4000
+
+
+Ejecutar proyecto
+
+npm run dev
+
+🔑 Usuarios Simulados
+
+Para acceder, usa alguno de estos usuarios en el login:
+
+Usuario	Contraseña
+Nataly123	nataly123
+Alison123	alison123
+Andres123	andres123
+🛠️ Tecnologías utilizadas
+
+React 19
+
+Vite
+
+TailwindCSS
+
+Axios
+
+React Router DOM
+
+React Toastify
+
+JSON Server
+
+ESLint + Prettier
+
+📌 Flujo de uso
+
+Iniciar sesión con un usuario válido.
+
+Crear una nueva tarea (se guarda en JSON Server).
+
+Editar o marcar como completada una tarea.
+
+Buscar tareas por texto o autor en tiempo real.
+
+Eliminar una tarea.
+
+Cerrar sesión.
+
+👥 Autores
+
+Nataly
+
+Alison
+
+Andrés
+
+Cada integrante desarrolló y documentó un componente específico, además de colaborar en la integración y pruebas finales.
+
+📽️ Demo Final
+
+La presentación incluye:
+
+Explicación del enunciado.
+
+Arquitectura del proyecto.
+
+Flujo completo de autenticación y tareas.
+
+Demo en vivo con creación, edición, búsqueda y eliminación de tareas.
