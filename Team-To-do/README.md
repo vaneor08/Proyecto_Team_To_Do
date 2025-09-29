@@ -91,38 +91,19 @@ JSON Server
 
 ESLint + Prettier
 
-📌 Flujo de uso
+Flujo de uso
 
-Iniciar sesión con un usuario válido.
-
-Crear una nueva tarea (se guarda en JSON Server).
-
-Editar o marcar como completada una tarea.
-
-Buscar tareas por texto o autor en tiempo real.
-
-Eliminar una tarea.
-
-Cerrar sesión.
+-Iniciar sesión con un usuario válido.
+-Crear una nueva tarea (se guarda en JSON Server).
+-Editar o marcar como completada una tarea.
+-Buscar tareas por texto o autor en tiempo real.
+-Eliminar una tarea.
+-Cerrar sesión.
 
 👥 Autores
 
-Nataly
+-Nataly
+-Alison
+-Andrés
 
-Alison
 
-Andrés
-
-Cada integrante desarrolló y documentó un componente específico, además de colaborar en la integración y pruebas finales.
-
-📽️ Demo Final
-
-La presentación incluye:
-
-Explicación del enunciado.
-
-Arquitectura del proyecto.
-
-Flujo completo de autenticación y tareas.
-
-Demo en vivo con creación, edición, búsqueda y eliminación de tareas.

@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
-export default function Login({ setUser }) {
+export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // 👈 hook para redirigir
+  const navigate = useNavigate();
+
+  const { login } = useAuth(); // 👈 usamos el contexto en lugar de setUser
 
   const users = [
     { username: "Nataly123", password: "nataly123" },
@@ -18,9 +21,10 @@ export default function Login({ setUser }) {
     const found = users.find(
       (u) => u.username === username && u.password === password
     );
+
     if (found) {
-      setUser(found.username);
-      navigate("/tasks"); // 👈 redirige a /tasks
+      login(found.username); // 👈 ahora usamos login()
+      navigate("/tasks");    // 👈 redirige a /tasks
     } else {
       setError("Credenciales inválidas ❌");
     }

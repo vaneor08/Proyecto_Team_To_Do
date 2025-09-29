@@ -8,10 +8,10 @@ export default function SearchBar({ search, setSearch }) {
   const debouncedValue = useDebounce(inputValue, 150);
 
   useEffect(() => {
-    setLoading(true); // empieza la carga cuando cambia el input
+    setLoading(true);
     const timeout = setTimeout(() => {
       setSearch(debouncedValue);
-      setLoading(false); // termina la carga cuando aplica el debounce
+      setLoading(false);
     }, 300);
 
     return () => clearTimeout(timeout);
@@ -27,7 +27,6 @@ export default function SearchBar({ search, setSearch }) {
         className="w-full p-2 border-2 rounded bg-white pr-10"
       />
 
-      {/* Loader (circulito) */}
       {loading && (
         <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
           <svg

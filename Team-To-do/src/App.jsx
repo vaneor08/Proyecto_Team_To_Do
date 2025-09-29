@@ -10,9 +10,10 @@ import TaskList from "./components/TaskList";
 import SearchBar from "./components/SearchBar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import useDebounce from "./hooks/useDebounce";
+import { useAuth } from "./context/AuthContext";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const { user, logout } = useAuth();
   const [tasks, setTasks] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,7 +21,7 @@ function App() {
 
   const debouncedSearch = useDebounce(search, 150);
 
-  // 📌 Cargar tareas desde JSON Server
+  //  Cargar tareas desde JSON Server
   useEffect(() => {
     const fetchTasks = async () => {
       try {
@@ -37,7 +38,7 @@ function App() {
     fetchTasks();
   }, []);
 
-  // 📌 Crear tarea
+  //  Crear tarea
   const addTask = async (task) => {
     try {
       const res = await axios.post("http://localhost:4000/tasks", task);
@@ -48,7 +49,7 @@ function App() {
     }
   };
 
-  // 📌 Alternar completado
+  //  Alternar completado
   const toggleTask = async (id) => {
     const task = tasks.find((t) => t.id === id);
     try {
@@ -63,7 +64,7 @@ function App() {
     }
   };
 
-  // 📌 Eliminar tarea
+  //  Eliminar tarea
   const deleteTask = async (id) => {
     try {
       await axios.delete(`http://localhost:4000/tasks/${id}`);
@@ -74,7 +75,7 @@ function App() {
     }
   };
 
-  // 📌 Editar tarea
+  //  Editar tarea
   const editTask = async (id, newText) => {
     const task = tasks.find((t) => t.id === id);
     try {
@@ -89,7 +90,6 @@ function App() {
     }
   };
 
-  const logout = () => setUser(null);
 
   const filteredTasks = tasks.filter(
     (t) =>
@@ -97,57 +97,56 @@ function App() {
       t.author.toLowerCase().includes(debouncedSearch.toLowerCase())
   );
 
-  return (
-    <Router>
-      <Routes>
-        {/* Ruta pública: Login */}
-        <Route path="/login" element={<Login setUser={setUser} />} />
+ return (
+  
+    <Routes>
+      {/* Ruta pública: Login */}
+      <Route path="/login" element={<Login />} />
 
-        {/* Ruta protegida: Lista de tareas */}
-        <Route
-          path="/tasks"
-          element={
-            <ProtectedRoute user={user}>
-              <div className="min-h-screen bg-blue-200 p-6">
-                <div className="flex justify-end mb-6">
-                  <button
-                    onClick={logout}
-                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-                  >
-                    Cerrar sesión
-                  </button>
-                </div>
+      {/* Ruta protegida: Lista de tareas */}
+      <Route
+        path="/tasks"
+        element={
+          <ProtectedRoute>
+            <div className="min-h-screen bg-blue-200 p-6">
+              <div className="flex justify-end mb-6">
+                <button
+                  onClick={logout}
+                  className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                >
+                  Cerrar sesión
+                </button>
+              </div>
 
-                <div className="flex flex-col items-center text-center">
-                  <h1 className="text-3xl font-bold mb-2">Team To-Do ✅</h1>
-                  <p className="mb-6">Bienvenido, {user} 👋</p>
+              <div className="flex flex-col items-center text-center">
+                <h1 className="text-3xl font-bold mb-2">Team To-Do ✅</h1>
+                <p className="mb-6">Bienvenido, {user} 👋</p>
 
-                  {/* 📌 Loading y error */}
-                  {loading && <p className="text-gray-600">Cargando tareas...</p>}
-                  {error && <p className="text-red-500">{error}</p>}
+                {loading && <p className="text-gray-600">Cargando tareas...</p>}
+                {error && <p className="text-red-500">{error}</p>}
 
-                  <div className="w-full max-w-2xl space-y-4">
-                    <TaskForm addTask={addTask} author={user} />
-                    <SearchBar search={search} setSearch={setSearch} />
-                    <TaskList
-                      tasks={filteredTasks}
-                      toggleTask={toggleTask}
-                      deleteTask={deleteTask}
-                      editTask={editTask}
-                    />
-                  </div>
+                <div className="w-full max-w-2xl space-y-4">
+                  <TaskForm addTask={addTask} author={user} />
+                  <SearchBar search={search} setSearch={setSearch} />
+                  <TaskList
+                    tasks={filteredTasks}
+                    toggleTask={toggleTask}
+                    deleteTask={deleteTask}
+                    editTask={editTask}
+                  />
                 </div>
               </div>
-              <ToastContainer position="top-right" autoClose={3000} />
-            </ProtectedRoute>
-          }
-        />
+            </div>
+            <ToastContainer position="top-right" autoClose={3000} />
+          </ProtectedRoute>
+        }
+      />
 
-        {/* Redirección por defecto */}
-        <Route path="*" element={<Login setUser={setUser} />} />
-      </Routes>
-    </Router>
-  );
+      {/* Redirección por defecto */}
+      <Route path="*" element={<Login />} />
+    </Routes>
+  
+);
 }
 
 export default App;
