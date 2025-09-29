@@ -31,6 +31,19 @@ function App() {
       t.text.toLowerCase().includes(search.toLowerCase()) ||
       t.author.toLowerCase().includes(search.toLowerCase())
   );
+  
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((t) => t.id !== id));
+  };
+
+
+  const editTask = (id, newText) => {
+    setTasks(
+      tasks.map((t) =>
+        t.id === id ? { ...t, text: newText } : t
+      )
+    );
+  };
 
   if (!user) return <Login setUser={setUser} />;
 
@@ -52,7 +65,7 @@ function App() {
         <div className="w-full max-w-2xl space-y-4">
           <TaskForm addTask={addTask} author={user} />
           <SearchBar search={search} setSearch={setSearch} />
-          <TaskList tasks={filteredTasks} toggleTask={toggleTask} />
+          <TaskList tasks={filteredTasks} toggleTask={toggleTask} deleteTask={deleteTask} editTask={editTask} />
         </div>
       </div>
     </div>
