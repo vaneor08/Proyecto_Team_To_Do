@@ -88,14 +88,3 @@ Andrés
 
 Cada integrante desarrolló y documentó un componente específico, además de colaborar en la integración y pruebas finales.
 
-📽️ Demo Final
-
-La presentación incluye:
-
-Explicación del enunciado.
-
-Arquitectura del proyecto.
-
-Flujo completo de autenticación y tareas.
-
-Demo en vivo con creación, edición, búsqueda y eliminación de tareas.
